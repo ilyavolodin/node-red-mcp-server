@@ -102,6 +102,25 @@ const server = createServer({
 await server.start();
 ```
 
+## Running with npx
+
+You can run the Node-RED MCP server directly using `npx` without needing to globally or locally install the package. This is useful for quick use or in environments where you don't want to manage installations.
+
+Use the following command:
+
+```bash
+npx node-red-mcp-server [options]
+```
+
+Replace `[options]` with any command-line options supported by the server (e.g., `--url http://localhost:1880`, `--token your_token`).
+
+For example:
+```bash
+npx node-red-mcp-server --url http://localhost:1880 -v
+```
+
+This command will download the latest version of the server, run it with the specified options, and then remove it from your system once it finishes (or you stop it).
+
 ## Configuration Options
 
 ### CLI Parameters
