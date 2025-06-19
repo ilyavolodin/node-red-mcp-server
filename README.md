@@ -63,14 +63,14 @@ node-red-mcp-server
 2. Configure Claude Desktop:
    - Open Claude Desktop app
    - Go to Settings → Advanced → Tool Configuration
-   - Add a new tool configuration:
+   - Add a new tool configuration. You can use `npx` to run the server without manual installation. This is often the easiest way to get started:
+
    ```json
    {
      "node-red": {
-       "command": "node",
+       "command": "npx",
        "args": [
-         "/path/to/node-red-mcp-server/bin/node-red-mcp-server.mjs",
-         "--verbose"
+         "node-red-mcp-server"
        ],
        "env": {
          "NODE_RED_URL": "http://your-node-red-url:1880",
@@ -80,9 +80,28 @@ node-red-mcp-server
      }
    }
    ```
-   - Replace `/path/to/node-red-mcp-server` with the actual path to your installation
-   - Update `NODE_RED_URL` to point to your Node-RED instance
-   - Set `NODE_RED_TOKEN` if your Node-RED instance requires authentication
+   - Ensure `NODE_RED_URL` points to your Node-RED instance.
+   - Set `NODE_RED_TOKEN` if your Node-RED instance requires authentication.
+   - `MCP_SERVER_PORT` is the port on which the MCP server will listen (defaults to 3000 if not specified by Claude Desktop or this env var).
+
+   Alternatively, if you have installed the server globally or locally and know the path to the script, you can configure it like this:
+   ```json
+   {
+     "node-red": {
+       "command": "node",
+       "args": [
+         "/path/to/node-red-mcp-server/bin/node-red-mcp-server.mjs"
+         // You can add other CLI arguments here, e.g., "--verbose"
+       ],
+       "env": {
+         "NODE_RED_URL": "http://your-node-red-url:1880",
+         "NODE_RED_TOKEN": "your-token-if-needed",
+         "MCP_SERVER_PORT": "3000"
+       }
+     }
+   }
+   ```
+   - Replace `/path/to/node-red-mcp-server` with the actual path if using this method.
 
 3. After configuration, Claude can interact with your Node-RED instance through the MCP tools.
 
@@ -101,25 +120,6 @@ const server = createServer({
 
 await server.start();
 ```
-
-## Running with npx
-
-You can run the Node-RED MCP server directly using `npx` without needing to globally or locally install the package. This is useful for quick use or in environments where you don't want to manage installations.
-
-Use the following command:
-
-```bash
-npx node-red-mcp-server [options]
-```
-
-Replace `[options]` with any command-line options supported by the server (e.g., `--url http://localhost:1880`, `--token your_token`).
-
-For example:
-```bash
-npx node-red-mcp-server --url http://localhost:1880 -v
-```
-
-This command will download the latest version of the server, run it with the specified options, and then remove it from your system once it finishes (or you stop it).
 
 ## Configuration Options
 
