@@ -93,12 +93,15 @@ node-red-mcp-server
        ],
        "env": {
          "NODE_RED_URL": "http://your-node-red-url:1880",
-         "NODE_RED_TOKEN": "your-token-if-needed"
+         "NODE_RED_TOKEN": "your-token-if-needed",
+         "MCP_SERVER_PORT": "3000"
        }
      }
    }
    ```
-   - Replace `/path/to/node-red-mcp-server` with the actual path if using this method.
+   - Replace `/path/to/node-red-mcp-server` with the actual path to your installation
+   - Update `NODE_RED_URL` to point to your Node-RED instance
+   - Set `NODE_RED_TOKEN` if your Node-RED instance requires authentication
 
 3. After configuration, Claude can interact with your Node-RED instance through the MCP tools.
 
