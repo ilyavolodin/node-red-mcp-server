@@ -74,15 +74,13 @@ node-red-mcp-server
        ],
        "env": {
          "NODE_RED_URL": "http://your-node-red-url:1880",
-         "NODE_RED_TOKEN": "your-token-if-needed",
-         "MCP_SERVER_PORT": "3000"
+         "NODE_RED_TOKEN": "your-token-if-needed"
        }
      }
    }
    ```
    - Ensure `NODE_RED_URL` points to your Node-RED instance.
    - Set `NODE_RED_TOKEN` if your Node-RED instance requires authentication.
-   - `MCP_SERVER_PORT` is an environment variable that Claude Desktop may use to manage or proxy the tool. When `node-red-mcp-server` is run via `npx` or `node` directly using its standard configuration, it communicates over STDIO and does not open a network port itself. If Claude Desktop requires a tool to listen on a specific port, this variable might inform Claude Desktop, but it does not cause `node-red-mcp-server` to listen on that port with its default transport.
 
    Alternatively, if you have installed the server globally or locally and know the path to the script, you can configure it like this:
    ```json
@@ -95,8 +93,7 @@ node-red-mcp-server
        ],
        "env": {
          "NODE_RED_URL": "http://your-node-red-url:1880",
-         "NODE_RED_TOKEN": "your-token-if-needed",
-         "MCP_SERVER_PORT": "3000"
+         "NODE_RED_TOKEN": "your-token-if-needed"
        }
      }
    }
